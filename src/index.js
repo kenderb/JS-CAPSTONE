@@ -37,3 +37,4 @@ const config = {
 };
 
 const game = new Phaser.Game(config);
+console.log('hello looks like it is working');
