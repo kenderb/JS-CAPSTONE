@@ -51,6 +51,7 @@ export default class SceneMain extends Phaser.Scene {
     this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
     this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+
     this.anims.create({
       key: 'sprEnemy0',
       frames: this.anims.generateFrameNumbers('sprEnemy0'),
@@ -82,6 +83,7 @@ export default class SceneMain extends Phaser.Scene {
       ],
       laser: this.sound.add('sndLaser'),
     };
+
     this.player = new Player(
       this,
       this.game.config.width * 0.5,
