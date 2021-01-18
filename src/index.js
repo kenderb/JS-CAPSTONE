@@ -1,5 +1,4 @@
 import Phaser from 'phaser';
-import Player from './player';
 import SceneMainMenu from './scenes/SceneMainMenu';
 import SceneMain from './scenes/SceneMain';
 import SceneGameOver from './scenes/SceneGameOver';
