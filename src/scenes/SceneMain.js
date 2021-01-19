@@ -11,10 +11,10 @@ import sprPlayer from '../assets/sprPlayer.png';
 import sndExplode0 from '../assets/sndExplode0.wav';
 import sndExplode1 from '../assets/sndExplode1.wav';
 import sndLaser from '../assets/sndLaser.wav';
-import Player from '../player';
-import GunShip from '../gunship';
-import CarrierShip from '../carrierShip';
-import ChaserShip from '../chaserShip';
+import Player from '../spaceships/player';
+import GunShip from '../spaceships/gunship';
+import CarrierShip from '../spaceships/carrierShip';
+import ChaserShip from '../spaceships/chaserShip';
 
 export default class SceneMain extends Phaser.Scene {
   constructor() {
@@ -94,7 +94,6 @@ export default class SceneMain extends Phaser.Scene {
       callbackScope: this,
       loop: true,
     });
-
 
     this.anims.create({
       key: 'sprEnemy0',
