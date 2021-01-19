@@ -171,24 +171,26 @@ export default class SceneMain extends Phaser.Scene {
   }
 
   update() {
-    this.player.update();
+    if (!this.player.getData('isDead')) {
+      this.player.update();
 
-    if (this.keyW.isDown) {
-      this.player.moveUp();
-    } else if (this.keyS.isDown) {
-      this.player.moveDown();
-    }
+      if (this.keyW.isDown) {
+        this.player.moveUp();
+      } else if (this.keyS.isDown) {
+        this.player.moveDown();
+      }
 
-    if (this.keyA.isDown) {
-      this.player.moveLeft();
-    } else if (this.keyD.isDown) {
-      this.player.moveRight();
-    }
-    if (this.keySpace.isDown) {
-      this.player.setData('isShooting', true);
-    } else {
-      this.player.setData('timerShootTick', this.player.getData('timerShootDelay') - 1);
-      this.player.setData('isShooting', false);
+      if (this.keyA.isDown) {
+        this.player.moveLeft();
+      } else if (this.keyD.isDown) {
+        this.player.moveRight();
+      }
+      if (this.keySpace.isDown) {
+        this.player.setData('isShooting', true);
+      } else {
+        this.player.setData('timerShootTick', this.player.getData('timerShootDelay') - 1);
+        this.player.setData('isShooting', false);
+      }
     }
     for (let i = 0; i < this.enemies.getChildren().length; i += 1) {
       const enemy = this.enemies.getChildren()[i];
