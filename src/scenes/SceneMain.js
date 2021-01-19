@@ -15,6 +15,7 @@ import Player from '../spaceships/player';
 import GunShip from '../spaceships/gunship';
 import CarrierShip from '../spaceships/carrierShip';
 import ChaserShip from '../spaceships/chaserShip';
+import ScrollingBackground from '../scrollingBackground';
 
 export default class SceneMain extends Phaser.Scene {
   constructor() {
@@ -126,7 +127,11 @@ export default class SceneMain extends Phaser.Scene {
       ],
       laser: this.sound.add('sndLaser'),
     };
-
+    this.backgrounds = [];
+    for (let i = 0; i < 5; i += 1) {
+      const bg = new ScrollingBackground(this, 'sprBg0', i * 10);
+      this.backgrounds.push(bg);
+    }
     this.player = new Player(
       this,
       this.game.config.width * 0.5,
