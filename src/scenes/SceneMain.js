@@ -95,6 +95,7 @@ export default class SceneMain extends Phaser.Scene {
       loop: true,
     });
 
+
     this.anims.create({
       key: 'sprEnemy0',
       frames: this.anims.generateFrameNumbers('sprEnemy0'),
@@ -133,6 +134,29 @@ export default class SceneMain extends Phaser.Scene {
       this.game.config.height * 0.5,
       'sprPlayer',
     );
+
+    this.physics.add.collider(this.playerLasers, this.enemies, (playerLaser, enemy) => {
+      if (enemy) {
+        if (enemy.onDestroy !== undefined) {
+          enemy.onDestroy();
+        }
+        enemy.explode(true);
+        playerLaser.destroy();
+      }
+    });
+    this.physics.add.overlap(this.player, this.enemies, (player, enemy) => {
+      if (!player.getData('isDead') && !enemy.getData('isDead')) {
+        player.explode(false);
+        enemy.explode(true);
+      }
+    });
+    this.physics.add.overlap(this.player, this.enemyLasers, (player, laser) => {
+      if (!player.getData('isDead')
+          && !laser.getData('isDead')) {
+        player.explode(false);
+        laser.destroy();
+      }
+    });
   }
 
   getEnemiesByType(type) {
