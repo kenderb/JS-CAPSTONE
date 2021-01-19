@@ -24,9 +24,4 @@ const config = {
   roundPixels: true,
 };
 
-const runGame = () => {
-  const game = new Phaser.Game(config);
-  return game;
-};
-
-runGame();
+export default new Phaser.Game(config);
