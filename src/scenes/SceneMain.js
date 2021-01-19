@@ -41,8 +41,8 @@ export default class SceneMain extends Phaser.Scene {
     this.load.image('sprLaserEnemy0', sprLaserEnemy0);
     this.load.image('sprLaserPlayer', sprLaserPlayer);
     this.load.spritesheet('sprPlayer', sprPlayer, {
-      frameWidth: 16,
-      frameHeight: 16,
+      frameWidth: 32,
+      frameHeight: 32,
     });
     this.load.audio('sndExplode0', sndExplode0);
     this.load.audio('sndExplode1', sndExplode1);
