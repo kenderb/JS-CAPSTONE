@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import ScrollingBackground from '../scrollingBackground';
+import { getLocalScores } from '../localStorage';
 
 export default class SceneGameOver extends Phaser.Scene {
   constructor() {
@@ -15,6 +16,14 @@ export default class SceneGameOver extends Phaser.Scene {
       align: 'center',
     });
     this.title.setOrigin(0.5);
+    this.score = this.add.text(this.game.config.width * 0.5, 400, `Your Score: ${getLocalScores()[0]} pts!!!`, {
+      fontFamily: 'monospace',
+      fontSize: 16,
+      fontStyle: 'bold',
+      color: '#ffffff',
+      align: 'center',
+    });
+    this.score.setOrigin(0.5);
     this.sfx = {
       btnOver: this.sound.add('sndBtnOver'),
       btnDown: this.sound.add('sndBtnDown'),

@@ -16,7 +16,8 @@ import GunShip from '../spaceships/gunship';
 import CarrierShip from '../spaceships/carrierShip';
 import ChaserShip from '../spaceships/chaserShip';
 import ScrollingBackground from '../scrollingBackground';
-import bgMusic from '../assets/bgMusic.mp3';
+import bgMusic from '../assets/bgMusic.ogg';
+import gameOver from '../assets/gameOver.ogg';
 
 export default class SceneMain extends Phaser.Scene {
   constructor() {
@@ -49,11 +50,13 @@ export default class SceneMain extends Phaser.Scene {
     this.load.audio('sndExplode1', sndExplode1);
     this.load.audio('sndLaser', sndLaser);
     this.load.audio('bgMusic', bgMusic);
+    this.load.audio('gameOver', gameOver);
   }
 
   create() {
-    this.song = this.sound.add('bgMusic', { volume: 0.2 });
-    this.song.play();
+    this.gameOverMusic = this.sound.add('gameOver', { volume: 0.2 }, true);
+    this.bgSong = this.sound.add('bgMusic', { volume: 0.2 });
+    this.bgSong.play();
     this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
     this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
     this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -166,9 +169,12 @@ export default class SceneMain extends Phaser.Scene {
     });
     this.physics.add.overlap(this.player, this.enemies, (player, enemy) => {
       if (!player.getData('isDead') && !enemy.getData('isDead')) {
+        this.player.setScore(enemy.getData('score'));
         player.explode(false);
         player.onDestroy();
         enemy.explode(true);
+        this.bgSong.stop();
+        this.gameOverMusic.play();
       }
     });
     this.physics.add.overlap(this.player, this.enemyLasers, (player, laser) => {
@@ -177,6 +183,8 @@ export default class SceneMain extends Phaser.Scene {
         player.explode(false);
         player.onDestroy();
         laser.destroy();
+        this.bgSong.stop();
+        this.gameOverMusic.play();
       }
     });
   }
