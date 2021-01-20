@@ -56,11 +56,11 @@ export default class SceneMainMenu extends Phaser.Scene {
       this.btnPlay.setTexture('sprBtnPlay');
       this.scene.start('SceneMain');
     }, this);
-    this.title = this.add.text(this.game.config.width * 0.5, 128, 'SPACE SHOOTER', {
+    this.title = this.add.text(this.game.config.width * 0.5, 128, 'ALIEN ATACK', {
       fontFamily: 'monospace',
       fontSize: 48,
       fontStyle: 'bold',
-      color: '#ffffff',
+      color: 'red',
       align: 'center',
     });
     this.title.setOrigin(0.5);

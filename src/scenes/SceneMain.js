@@ -30,8 +30,8 @@ export default class SceneMain extends Phaser.Scene {
       frameHeight: 32,
     });
     this.load.spritesheet('sprEnemy0', sprEnemy0, {
-      frameWidth: 16,
-      frameHeight: 16,
+      frameWidth: 32,
+      frameHeight: 32,
     });
     this.load.image('sprEnemy1', sprEnemy1);
     this.load.spritesheet('sprEnemy2', sprEnemy2, {
@@ -42,7 +42,7 @@ export default class SceneMain extends Phaser.Scene {
     this.load.image('sprLaserPlayer', sprLaserPlayer);
     this.load.spritesheet('sprPlayer', sprPlayer, {
       frameWidth: 16,
-      frameHeight: 16,
+      frameHeight: 24,
     });
     this.load.audio('sndExplode0', sndExplode0);
     this.load.audio('sndExplode1', sndExplode1);
@@ -117,7 +117,7 @@ export default class SceneMain extends Phaser.Scene {
     this.anims.create({
       key: 'sprPlayer',
       frames: this.anims.generateFrameNumbers('sprPlayer'),
-      frameRate: 20,
+      frameRate: 3,
       repeat: -1,
     });
     this.sfx = {
