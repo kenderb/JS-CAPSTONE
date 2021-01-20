@@ -143,11 +143,22 @@ export default class SceneMain extends Phaser.Scene {
       this.game.config.height * 0.5,
       'sprPlayer',
     );
+    this.sceneScore = this.add.text(
+      this.game.config.width * 0,
+      this.game.config.height * 0,
+      `Score: ${this.player.getData('score')}`, {
+        color: '#55bfde',
+        fontFamily: 'sans-serif',
+        fontSize: '2vw',
+        lineHeight: 1.3,
+      },
+    );
 
     this.physics.add.collider(this.playerLasers, this.enemies, (playerLaser, enemy) => {
       if (enemy) {
         if (enemy.onDestroy !== undefined) {
           enemy.onDestroy();
+          this.player.setScore(enemy.getData('score'));
         }
         enemy.explode(true);
         playerLaser.destroy();
@@ -182,6 +193,9 @@ export default class SceneMain extends Phaser.Scene {
   }
 
   update() {
+    this.player.update();
+
+    this.sceneScore.text = `Score: ${this.player.getData('score')}`;
     if (!this.player.getData('isDead')) {
       this.player.update();
 

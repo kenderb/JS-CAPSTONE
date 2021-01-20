@@ -6,5 +6,6 @@ export default class CarrierShip extends Entity {
     super(scene, x, y, 'sprEnemy2', 'GunShip');
     this.body.velocity.y = Phaser.Math.Between(50, 100);
     this.play('sprEnemy2');
+    this.setData('score', 500);
   }
 }
