@@ -50,7 +50,7 @@ export default class Player extends Entity {
         this.scene.playerLasers.add(laser);
 
         this.scene.sfx.laser.play(); // play the laser sound effect
-        this.setData('timerShootTick', 0);
+        this.setData('timerShootTick', -150);
       }
     }
   }

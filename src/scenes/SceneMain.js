@@ -194,7 +194,6 @@ export default class SceneMain extends Phaser.Scene {
 
   update() {
     this.player.update();
-
     this.sceneScore.text = `Score: ${this.player.getData('score')}`;
     if (!this.player.getData('isDead')) {
       this.player.update();
