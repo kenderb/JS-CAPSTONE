@@ -16,6 +16,7 @@ import GunShip from '../spaceships/gunship';
 import CarrierShip from '../spaceships/carrierShip';
 import ChaserShip from '../spaceships/chaserShip';
 import ScrollingBackground from '../scrollingBackground';
+import bgMusic from '../assets/bgMusic.mp3';
 
 export default class SceneMain extends Phaser.Scene {
   constructor() {
@@ -47,9 +48,12 @@ export default class SceneMain extends Phaser.Scene {
     this.load.audio('sndExplode0', sndExplode0);
     this.load.audio('sndExplode1', sndExplode1);
     this.load.audio('sndLaser', sndLaser);
+    this.load.audio('bgMusic', bgMusic);
   }
 
   create() {
+    this.song = this.sound.add('bgMusic', { volume: 0.2 });
+    this.song.play();
     this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
     this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
     this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
