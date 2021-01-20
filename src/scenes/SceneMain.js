@@ -154,12 +154,12 @@ export default class SceneMain extends Phaser.Scene {
       },
     );
 
-    this.physics.add.collider(this.playerLasers, this.enemies, (playerLaser, enemy) => {
-      if (enemy) {
+    this.physics.add.overlap(this.playerLasers, this.enemies, (playerLaser, enemy) => {
+      if (enemy && !this.player.getData('isDead')) {
         if (enemy.onDestroy !== undefined) {
           enemy.onDestroy();
-          this.player.setScore(enemy.getData('score'));
         }
+        this.player.setScore(enemy.getData('score'));
         enemy.explode(true);
         playerLaser.destroy();
       }
