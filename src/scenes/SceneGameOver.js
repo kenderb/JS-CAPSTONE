@@ -29,8 +29,10 @@ export default class SceneGameOver extends Phaser.Scene {
       e.preventDefault();
       const saveScores = new ScoresApi();
       this.name = textInput.value;
-      saveScores.postScores(this.name, score);
-      this.scene.start('ScoreBoardScene');
+      if (this.name) {
+        saveScores.postScores(this.name, score);
+        this.scene.start('ScoreBoardScene');
+      }
     });
     bodyTag.append(form);
     return form;

@@ -57,7 +57,7 @@ export default class SceneMain extends Phaser.Scene {
     this.gameOverMusic = this.sound.add('gameOver', { volume: 0.2 }, true);
     this.bgSong = this.sound.add('bgMusic', { volume: 0.2 });
     this.bgSong.play();
-    this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.up);
+    this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
     this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
     this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
     this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
