@@ -24,7 +24,7 @@ export default class ScoreBoardScene extends Phaser.Scene {
         const Highscores = array.sort((a, b) => b.score - a.score).slice(1, 6);
         let gap = 0;
         Highscores.forEach((item) => {
-          this.add.text(this.game.config.width * 0.3, 180 + gap, `${item.name}   -------------    ${item.score}`, {
+          this.add.text(this.game.config.width * 0.3, 180 + gap, `${item.name} -------------  ${item.score}`, {
             fontSize: '17px',
             fill: '#55bfde',
             width: 400,
@@ -58,8 +58,8 @@ export default class ScoreBoardScene extends Phaser.Scene {
     this.btnRestart.setInteractive();
 
     this.btnRestart.on('pointerover', () => {
-      this.btnRestart.setTexture('sprBtnRestartHover'); // set the button texture to sprBtnPlayHover
-      this.sfx.btnOver.play(); // play the button over sound
+      this.btnRestart.setTexture('sprBtnRestartHover');
+      this.sfx.btnOver.play();
     }, this);
 
     this.btnRestart.on('pointerout', () => {
