@@ -16,11 +16,11 @@ export default class SceneGameOver extends Phaser.Scene {
     submitButton.type = 'submit';
     submitButton.id = 'submit-button';
     submitButton.innerHTML = 'Submit';
-    // submitButton.classList.add('submit-button');
+    submitButton.classList.add('submit-button');
     textInput.type = 'text';
     textInput.name = 'name';
-    textInput.placeholder = 'Type your name';
-    // textInput.classList.add('text-input');
+    textInput.placeholder = 'Type your name to submit your score';
+    textInput.classList.add('text-input');
     form.id = 'user-form';
     form.append(textInput);
     form.append(submitButton);
