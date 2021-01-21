@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import ScrollingBackground from '../scrollingBackground';
 import { getLocalScores } from '../localStorage';
 import ScoresApi from '../ScoresAPI';
+import sprGameOver from '../assets/gameOver.png';
 
 
 export default class SceneGameOver extends Phaser.Scene {
@@ -9,7 +10,16 @@ export default class SceneGameOver extends Phaser.Scene {
     super({ key: 'SceneGameOver' });
   }
 
+  preload() {
+    this.load.image('sprGameOver', sprGameOver);
+  }
+
   createForm(score) {
+    this.sprGameOver = this.add.sprite(
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.2,
+      'sprGameOver',
+    );
     const form = document.createElement('form');
     const textInput = document.createElement('input');
     const submitButton = document.createElement('button');
@@ -43,14 +53,6 @@ export default class SceneGameOver extends Phaser.Scene {
     const form = this.createForm(this.score);
     const element = this.add.dom(this.game.config.width * 0.5, -200, form);
     element.setDepth(3);
-    this.title = this.add.text(this.game.config.width * 0.5, 128, 'GAME OVER', {
-      fontFamily: 'monospace',
-      fontSize: 48,
-      fontStyle: 'bold',
-      color: '#ffffff',
-      align: 'center',
-    });
-    this.title.setOrigin(0.5);
     this.score = this.add.text(this.game.config.width * 0.5, 400, `Your Score: ${this.score} pts!!!`, {
       fontFamily: 'monospace',
       fontSize: 16,

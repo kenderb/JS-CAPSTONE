@@ -7,9 +7,14 @@ import sprBtnPlayDown from '../assets/sprBtnPlayDown.png';
 import sprBtnRestart from '../assets/sprBtnRestart.png';
 import sprBtnRestartHover from '../assets/sprBtnRestartHover.png';
 import sprBtnRestartDown from '../assets/sprBtnRestartDown.png';
+import titleFont from '../assets/TitleScreen.png';
 import sndBtnOver from '../assets/sndBtnOver.wav';
 import sndBtnDown from '../assets/sndBtnDown.wav';
 import ScrollingBackground from '../scrollingBackground';
+import sprBtnScore from '../assets/sprBtnSB.png';
+import sprBtnScoreHover from '../assets/sprBtnSbDown.png';
+import sprBtnScoreDown from '../assets/sprBtnSbHover.png';
+
 
 export default class SceneMainMenu extends Phaser.Scene {
   constructor() {
@@ -22,19 +27,21 @@ export default class SceneMainMenu extends Phaser.Scene {
     this.load.image('sprBtnPlay', sprBtnPlay);
     this.load.image('sprBtnPlayHover', sprBtnPlayHover);
     this.load.image('sprBtnPlayDown', sprBtnPlayDown);
+
+    this.load.image('sprBtnScore', sprBtnScore);
+    this.load.image('sprBtnScoreHover', sprBtnScoreHover);
+    this.load.image('sprBtnScoreDown', sprBtnScoreDown);
+
     this.load.image('sprBtnRestart', sprBtnRestart);
     this.load.image('sprBtnRestartHover', sprBtnRestartHover);
     this.load.image('sprBtnRestartDown', sprBtnRestartDown);
+    this.load.image('titleFont', titleFont);
 
     this.load.audio('sndBtnOver', sndBtnOver);
     this.load.audio('sndBtnDown', sndBtnDown);
   }
 
-  create() {
-    this.sfx = {
-      btnOver: this.sound.add('sndBtnOver'),
-      btnDown: this.sound.add('sndBtnDown'),
-    };
+  addPlayBtn() {
     this.btnPlay = this.add.sprite(
       this.game.config.width * 0.5,
       this.game.config.height * 0.5,
@@ -56,14 +63,44 @@ export default class SceneMainMenu extends Phaser.Scene {
       this.btnPlay.setTexture('sprBtnPlay');
       this.scene.start('SceneMain');
     }, this);
-    this.title = this.add.text(this.game.config.width * 0.5, 128, 'ALIEN ATTACK', {
-      fontFamily: 'monospace',
-      fontSize: 48,
-      fontStyle: 'bold',
-      color: 'red',
-      align: 'center',
+  }
+
+  addScoreBtn() {
+    this.btnScores = this.add.sprite(
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.6,
+      'sprBtnScore',
+    );
+    this.btnScores.setInteractive();
+    this.btnScores.on('pointerover', () => {
+      this.btnScores.setTexture('sprBtnScoreHover');
+      this.sfx.btnOver.play();
+    }, this);
+    this.btnScores.on('pointerout', () => {
+      this.btnScores.setTexture('sprBtnScore');
     });
-    this.title.setOrigin(0.5);
+    this.btnScores.on('pointerdown', () => {
+      this.btnScores.setTexture('sprBtnRestartDown');
+      this.sfx.btnDown.play();
+    }, this);
+    this.btnScores.on('pointerup', () => {
+      this.btnScores.setTexture('sprBtnScore');
+      this.scene.start('ScoreBoardScene');
+    }, this);
+  }
+
+  create() {
+    this.titleFont = this.add.sprite(
+      this.game.config.width * 0.5,
+      200,
+      'titleFont',
+    );
+    this.sfx = {
+      btnOver: this.sound.add('sndBtnOver'),
+      btnDown: this.sound.add('sndBtnDown'),
+    };
+    this.addPlayBtn();
+    this.addScoreBtn();
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {
       const keys = ['sprBg0', 'sprBg1'];

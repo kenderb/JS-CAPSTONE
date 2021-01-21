@@ -73,7 +73,7 @@ export default class ScoreBoardScene extends Phaser.Scene {
 
     this.btnRestart.on('pointerup', () => {
       this.btnRestart.setTexture('sprBtnRestart');
-      this.scene.start('SceneMain');
+      this.scene.start('SceneMainMenu');
     }, this);
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {
