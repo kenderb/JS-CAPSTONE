@@ -5,9 +5,38 @@ import { getLocalScores } from '../localStorage';
 export default class SceneGameOver extends Phaser.Scene {
   constructor() {
     super({ key: 'SceneGameOver' });
+    [this.score] = getLocalScores();
+  }
+
+  createForm(score) {
+    const form = document.createElement('form');
+    const textInput = document.createElement('input');
+    const submitButton = document.createElement('button');
+    const bodyTag = document.getElementsByTagName('body')[0];
+    submitButton.type = 'submit';
+    submitButton.id = 'submit-button';
+    submitButton.innerHTML = 'Submit';
+    // submitButton.classList.add('submit-button');
+    textInput.type = 'text';
+    textInput.name = 'name';
+    textInput.placeholder = 'Type your name';
+    // textInput.classList.add('text-input');
+    form.id = 'user-form';
+    form.append(textInput);
+    form.append(submitButton);
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      this.name = textInput.value;
+      console.log(`${this.name} ${score}`);
+    });
+    bodyTag.append(form);
+    return form;
   }
 
   create() {
+    const form = this.createForm(this.score);
+    const element = this.add.dom(this.game.config.width * 0.5, -200, form);
+    element.setDepth(3);
     this.title = this.add.text(this.game.config.width * 0.5, 128, 'GAME OVER', {
       fontFamily: 'monospace',
       fontSize: 48,
@@ -16,7 +45,7 @@ export default class SceneGameOver extends Phaser.Scene {
       align: 'center',
     });
     this.title.setOrigin(0.5);
-    this.score = this.add.text(this.game.config.width * 0.5, 400, `Your Score: ${getLocalScores()[0]} pts!!!`, {
+    this.score = this.add.text(this.game.config.width * 0.5, 400, `Your Score: ${this.score} pts!!!`, {
       fontFamily: 'monospace',
       fontSize: 16,
       fontStyle: 'bold',
