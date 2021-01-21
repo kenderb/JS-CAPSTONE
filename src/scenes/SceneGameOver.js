@@ -1,11 +1,12 @@
 import Phaser from 'phaser';
 import ScrollingBackground from '../scrollingBackground';
 import { getLocalScores } from '../localStorage';
+import ScoresApi from '../ScoresAPI';
+
 
 export default class SceneGameOver extends Phaser.Scene {
   constructor() {
     super({ key: 'SceneGameOver' });
-    [this.score] = getLocalScores();
   }
 
   createForm(score) {
@@ -26,14 +27,16 @@ export default class SceneGameOver extends Phaser.Scene {
     form.append(submitButton);
     form.addEventListener('submit', (e) => {
       e.preventDefault();
+      const saveScores = new ScoresApi();
       this.name = textInput.value;
-      console.log(`${this.name} ${score}`);
+      saveScores.postScores(this.name, score);
     });
     bodyTag.append(form);
     return form;
   }
 
   create() {
+    [this.score] = getLocalScores();
     const form = this.createForm(this.score);
     const element = this.add.dom(this.game.config.width * 0.5, -200, form);
     element.setDepth(3);
