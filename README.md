@@ -1,6 +1,6 @@
 # Alien Attack
 
-> This is a game where you play the role of a interestellar pilot and kill all the aliens avoiding to get hit or crashing with the Alien spaceships.
+> This is a game where you play the role of an interstellar pilot and kill all the aliens avoiding to get hit or crashing with the aliens spaceships.
 
 ![screenshot](./Screenshot_1.png)
 ![screenshot](./Screenshot_2.png)
@@ -12,23 +12,25 @@
 
 ### Concept
 
-- Play as a interstellar Pilot.
-- Destroid all the spaceships to earn more points.
-- Avoid craching with the enemy you have only one live.
+- Play as an interstellar Pilot.
+- Destroy all the spaceships to earn more points.
+- Avoid crashing with the enemy you have only one live.
 
 ### Controls
 
-You need a keyboard to control the panda.
+You need a keyboard to control the Player Ship.
 
 - Press ⬆️ to move up.
+- Press :arrow_down: to move down.
 - Press ➡️ to go right.
 - Press ⬅️ to go left.
+- Press <kbd>Space</kbd> to shoot.
 
 ### Assets
 
 |Asset                                      |Description                            |
 |-------------------------------------------|---------------------------------------|
-|![Player Space ship](./src/assets/sprPlayer.png)  |Panda spritesheet to animate the player|
+|![Player Space ship](./src/assets/sprPlayer.png)  | Player spaceship to destroy all aliens.|
 |![Alien space ship](./src/assets/sprEnemy0.png)   |Enemy Purple Killer Alien              |
 |![background](./src/assets/sprBg0.png)|World background                       |
 |![Alien Bullet](./src/assets/sprLaserEnemy0.png) |Enemy Bullet to avoid |
@@ -42,7 +44,7 @@ You need a keyboard to control the panda.
 
 ## Live Demo
 
-[Live Demo Link]()
+[Live Demo Link](https://rawcdn.githack.com/kenderb/JS-CAPSTONE/7059cccb1f0496604c53cf174f030729c178dd72/dist/index.html)
 
 ## Getting Started
 
@@ -55,7 +57,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Setup
 
-Run `git clone ` in your terminal to clone this repo.
+Run `git clone https://github.com/kenderb/JS-CAPSTONE.git` in your terminal to clone this repo.
 
 ### Install
 
@@ -73,9 +75,9 @@ Run `npm test` to run the tests.
 
 👤 **Kender Bolivar**
 
-- Github: [@kenderb]()
-- Twitter: [@kenderb]()
-- Linkedin: [kenderb]()
+- GitHub: [@kenderb](https://github.com/ken)
+- Twitter: [@KBTarts](https://twitter.com/KBTarts )
+- LinkedIn: [KenderBolivar](https://www.linkedin.com/in/kender-bolivar-1736086b/ )
 
 ## 🤝 Contributing
 
@@ -86,7 +88,7 @@ Contributions, issues, and feature requests are welcome!
 Give a ⭐️ if you like this project!
 
 ## Acknowledgments
-
+- Stack Overflow
 - [OpenGameArt](https://opengameart.org/)
 
 ## 📝 License
