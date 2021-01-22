@@ -71,6 +71,7 @@ export default class SceneMainMenu extends Phaser.Scene {
       this.btnPlay.setTexture('sprBtnPlay');
       this.scene.start('SceneMain');
     }, this);
+    return this.btnPlay;
   }
 
   addScoreBtn() {
@@ -95,6 +96,7 @@ export default class SceneMainMenu extends Phaser.Scene {
       this.btnScores.setTexture('sprBtnScore');
       this.scene.start('ScoreBoardScene');
     }, this);
+    return this.btnScores;
   }
 
   create() {
