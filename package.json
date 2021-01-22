@@ -5,7 +5,7 @@
       "jest-canvas-mock"
     ],
     "moduleNameMapper": {
-      "^.+\\.(css|less|scss|png)$": "identity-obj-proxy"
+      "^.+\\.(png|wav|mp3|ogg)$": "identity-obj-proxy"
     }
   },
   "version": "1.0.0",
