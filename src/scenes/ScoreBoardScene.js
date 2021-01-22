@@ -7,7 +7,32 @@ export default class ScoreBoardScene extends Phaser.Scene {
     super({ key: 'ScoreBoardScene' });
   }
 
+  addTitleBtn() {
+    this.sprBtnTitleS = this.add.sprite(
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.7,
+      'sprBtnTitleS',
+    );
+    this.sprBtnTitleS.setInteractive();
+    this.sprBtnTitleS.on('pointerover', () => {
+      this.sprBtnTitleS.setTexture('sprBtnTitleSHover');
+      this.sfx.btnOver.play();
+    }, this);
+    this.sprBtnTitleS.on('pointerout', () => {
+      this.sprBtnTitleS.setTexture('sprBtnTitleS');
+    });
+    this.sprBtnTitleS.on('pointerdown', () => {
+      this.sprBtnTitleS.setTexture('sprBtnTitleSDown');
+      this.sfx.btnDown.play();
+    }, this);
+    this.sprBtnTitleS.on('pointerup', () => {
+      this.sprBtnTitleS.setTexture('sprBtnTitleS');
+      this.scene.start('SceneMainMenu');
+    }, this);
+  }
+
   create() {
+    this.addTitleBtn();
     this.title = this.add.text(this.game.config.width * 0.5, 128, 'Score Board', {
       fontFamily: 'monospace',
       fontSize: 48,
@@ -49,32 +74,7 @@ export default class ScoreBoardScene extends Phaser.Scene {
       btnOver: this.sound.add('sndBtnOver'),
       btnDown: this.sound.add('sndBtnDown'),
     };
-    this.btnRestart = this.add.sprite(
-      this.game.config.width * 0.5,
-      this.game.config.height * 0.8,
-      'sprBtnRestart',
-    );
 
-    this.btnRestart.setInteractive();
-
-    this.btnRestart.on('pointerover', () => {
-      this.btnRestart.setTexture('sprBtnRestartHover');
-      this.sfx.btnOver.play();
-    }, this);
-
-    this.btnRestart.on('pointerout', () => {
-      this.btnRestart.setTexture('sprBtnRestart');
-    });
-
-    this.btnRestart.on('pointerdown', () => {
-      this.btnRestart.setTexture('sprBtnRestartDown');
-      this.sfx.btnDown.play();
-    }, this);
-
-    this.btnRestart.on('pointerup', () => {
-      this.btnRestart.setTexture('sprBtnRestart');
-      this.scene.start('SceneMainMenu');
-    }, this);
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {
       const keys = ['sprBg0', 'sprBg1'];

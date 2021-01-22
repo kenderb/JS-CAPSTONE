@@ -14,6 +14,9 @@ import ScrollingBackground from '../scrollingBackground';
 import sprBtnScore from '../assets/sprBtnSB.png';
 import sprBtnScoreHover from '../assets/sprBtnSbDown.png';
 import sprBtnScoreDown from '../assets/sprBtnSbHover.png';
+import sprBtnTitleS from '../assets/sprBtnTs.png';
+import sprBtnTitleSHover from '../assets/sprBtnTsDown.png';
+import sprBtnTitleSDown from '../assets/sprBtnTsHover.png';
 
 
 export default class SceneMainMenu extends Phaser.Scene {
@@ -22,8 +25,13 @@ export default class SceneMainMenu extends Phaser.Scene {
   }
 
   preload() {
+    this.load.image('sprBtnTitleS', sprBtnTitleS);
+    this.load.image('sprBtnTitleSHover', sprBtnTitleSHover);
+    this.load.image('sprBtnTitleSDown', sprBtnTitleSDown);
+
     this.load.image('sprBg0', sprBg0);
     this.load.image('sprBg1', sprBg1);
+
     this.load.image('sprBtnPlay', sprBtnPlay);
     this.load.image('sprBtnPlayHover', sprBtnPlayHover);
     this.load.image('sprBtnPlayDown', sprBtnPlayDown);
