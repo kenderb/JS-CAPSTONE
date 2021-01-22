@@ -16,7 +16,7 @@ Additional description about the project and its features.
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo Link](https://rawcdn.githack.com/kenderb/JS-CAPSTONE/7059cccb1f0496604c53cf174f030729c178dd72/dist/index.html)
 
 
 ## Getting Started
