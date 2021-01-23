@@ -1,4 +1,5 @@
 import Entity from './Entities';
+import laserConfig from './laserConfig';
 
 export default class PlayerLaser extends Entity {
   constructor(scene, x, y) {
@@ -11,14 +12,7 @@ export default class PlayerLaser extends Entity {
       const laser = this.playerLasers.getChildren()[i];
       laser.update();
 
-      if (laser.x < -laser.displayWidth
-        || laser.x > this.game.config.width + laser.displayWidth
-        || laser.y < -laser.displayHeight * 4
-        || laser.y > this.game.config.height + laser.displayHeight) {
-        if (laser) {
-          laser.destroy();
-        }
-      }
+      laserConfig(laser);
     }
   }
 }
