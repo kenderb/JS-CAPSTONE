@@ -1,6 +1,6 @@
 
 // M1mobuMiRuczfzhHj0qs
-// name: 'Star Wars - Space Shooter'
+// name: 'Space Shooter'
 export default class ScoresApi {
   constructor() {
     this.url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/M1mobuMiRuczfzhHj0qs/scores/';
