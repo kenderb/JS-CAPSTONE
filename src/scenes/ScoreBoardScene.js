@@ -42,34 +42,33 @@ export default class ScoreBoardScene extends Phaser.Scene {
     });
     this.title.setOrigin(0.5);
     const scoreList = new ScoresApi();
-    scoreList.getScores()
-      .then((data) => {
-        const array = [];
-        data.result.forEach((item) => array.push({ name: item.user, score: item.score }));
-        const Highscores = array.sort((a, b) => b.score - a.score).slice(1, 6);
-        let gap = 0;
-        Highscores.forEach((item) => {
-          this.add.text(this.game.config.width * 0.3, 180 + gap, `${item.name} -------------  ${item.score}`, {
-            fontSize: '17px',
-            fill: '#55bfde',
-            width: 400,
-            fontFamily: 'sans-serif',
-            padding: {
-              left: 10,
-              right: 10,
-              top: 10,
-              bottom: 10,
-            },
-          });
-          gap += 50;
-        });
-      }).catch(() => {
-        this.add.text(this.game.config.width * 0.3, 180, 'Network Error. You can try again later.', {
+    scoreList.getScores().then((data) => {
+      const array = [];
+      data.result.forEach((item) => array.push({ name: item.user, score: item.score }));
+      const Highscores = array.sort((a, b) => b.score - a.score).slice(1, 6);
+      let gap = 0;
+      Highscores.forEach((item) => {
+        this.add.text(this.game.config.width * 0.3, 180 + gap, `${item.name} -------------  ${item.score}`, {
           fontSize: '17px',
-          fill: 'red',
+          fill: '#55bfde',
+          width: 400,
           fontFamily: 'sans-serif',
+          padding: {
+            left: 10,
+            right: 10,
+            top: 10,
+            bottom: 10,
+          },
         });
+        gap += 50;
       });
+    }).catch(() => {
+      this.add.text(this.game.config.width * 0.3, 180, 'Network Error. You can try again later.', {
+        fontSize: '17px',
+        fill: 'red',
+        fontFamily: 'sans-serif',
+      });
+    });
     this.sfx = {
       btnOver: this.sound.add('sndBtnOver'),
       btnDown: this.sound.add('sndBtnDown'),
